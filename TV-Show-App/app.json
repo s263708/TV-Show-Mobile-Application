@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "TV-Show-App",
-    "slug": "TV-Show-App",
+    "name": "tv-show-app",
+    "slug": "tv-show-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
