@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { global } from '../config/global';
+import { StyleSheet, Text, View, ActivityIndicator, FlatList, Image, Pressable } from 'react-native';
 
 export default function ShowsScreen({ navigation }) {
 
-  const [searchQuery, setSearchQuery] = useState('Batman');
-
+  const [searchQuery, setSearchQuery] = useState('a');
   const [shows, setShows] = useState();
 
   const searchShows = () => {
@@ -24,17 +22,82 @@ export default function ShowsScreen({ navigation }) {
 
   useEffect(() => {
     searchShows();
-  }, [searchQuery])
+  }, [searchQuery]);
 
   return (
     <View style={styles.ShowsScreen}>
-      <Text>TV Shows screen</Text>
+      {shows && shows.length > 0 ? (
+        <View style={styles.resultsContainer}>
+          <FlatList
+            numColumns={2}
+            style={{ margin: 10 }}
+            data={shows}
+            keyExtractor={(item) => item.show.id.toString()}
+            renderItem={({ item }) => (
+              <View style={styles.resultItem}>
+                <Pressable
+                  style={styles.resultImageTouchable}
+                  onPress={() => {
+                    navigation.navigate('Show Details', {
+                      showId: item.show.id,
+                    });
+                  }}
+                >
+                  <Image
+                    style={styles.resultImage}
+                    source={{
+                      uri: item.show.image
+                        ? item.show.image.medium
+                        : 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg'
+                    }}
+                    resizeMode="cover"
+                  />
+                </Pressable>
+                <Text style={styles.resultText}>{item.show.name}</Text>
+              </View>
+            )}
+          />
+        </View>
+      ) : (
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size="large" color="#000"/>
+        </View>
+      )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   ShowsScreen: {
+    flex: 1,
+  },
 
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+
+  resultsContainer: {
+    flex: 1,
+  },
+
+  resultItem: {
+    width: '50%',
+    margin: '1%',
+    alignItems: 'center',
+  },
+
+  resultImageTouchable: {
+    width: '100%',
+  },
+
+  resultImage: {
+    width: '100%',
+    height: 250,
+  },
+
+  resultText: {
+    marginTop: 5,
+    textAlign: 'center',
   },
 });
