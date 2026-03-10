@@ -1,0 +1,1 @@
+This app allows users to search for, and find information about, various shows and actors.
