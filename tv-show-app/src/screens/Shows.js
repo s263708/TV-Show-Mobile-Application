@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator, FlatList, Image, Pressable } from 'react-native';
 import SearchForm from '../components/SearchForm';
+import Filter from '../components/Filter';
 
 export default function ShowsScreen({ navigation }) {
 
   const [searchQuery, setSearchQuery] = useState('a');
   const [shows, setShows] = useState();
+  const [genres, setGenres] = useState([]);
+  const [selectedGenres, setSelectedGenres] = useState([]);
+  const [filterOpen, setFilterOpen] = useState(false);
 
   const searchShows = () => {
     console.log("Make a call to the API using the search query: " + searchQuery);
@@ -13,8 +17,17 @@ export default function ShowsScreen({ navigation }) {
     fetch('https://api.tvmaze.com/search/shows?q=' + searchQuery)
       .then((response) => response.json())
       .then((json) => {
-        console.log(json);
+
         setShows(json);
+
+        const genreSet = new Set();
+
+        json.forEach(item => {
+          item.show.genres.forEach(g => genreSet.add(g));
+        });
+
+        setGenres([...genreSet]);
+
       })
       .catch((error) => {
         console.error(error);
@@ -25,17 +38,38 @@ export default function ShowsScreen({ navigation }) {
     searchShows();
   }, [searchQuery]);
 
+  const filteredShows = shows?.filter((item) => {
+
+    if (selectedGenres.length === 0) return true;
+
+    return selectedGenres.some(genre =>
+      item.show.genres.includes(genre)
+    );
+
+  });
+
   return (
     <View style={styles.ShowsScreen}>
 
-      <SearchForm setSearchQuery={setSearchQuery}/>
+      <SearchForm
+        setSearchQuery={setSearchQuery}
+        openFilter={() => setFilterOpen(!filterOpen)}
+      />
 
-      {shows && shows.length > 0 ? (
+      {filterOpen && (
+        <Filter
+          genres={genres}
+          selectedGenres={selectedGenres}
+          setSelectedGenres={setSelectedGenres}
+        />
+      )}
+
+      {filteredShows && filteredShows.length > 0 ? (
         <View style={styles.resultsContainer}>
           <FlatList
             numColumns={2}
             style={{ margin: 10 }}
-            data={shows}
+            data={filteredShows}
             keyExtractor={(item) => item.show.id.toString()}
             renderItem={({ item }) => (
               <View style={styles.resultItem}>
@@ -67,6 +101,7 @@ export default function ShowsScreen({ navigation }) {
           <ActivityIndicator size="large" color="#000"/>
         </View>
       )}
+
     </View>
   );
 }
