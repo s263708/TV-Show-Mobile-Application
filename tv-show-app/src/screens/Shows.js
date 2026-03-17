@@ -6,9 +6,13 @@ import Filter from '../components/Filter';
 export default function ShowsScreen({ navigation }) {
 
   const [searchQuery, setSearchQuery] = useState('a');
+
   const [shows, setShows] = useState();
+
   const [genres, setGenres] = useState([]);
+
   const [selectedGenres, setSelectedGenres] = useState([]);
+
   const [filterOpen, setFilterOpen] = useState(false);
 
   const searchShows = () => {
@@ -27,6 +31,8 @@ export default function ShowsScreen({ navigation }) {
         });
 
         setGenres([...genreSet]);
+
+        setSelectedGenres([]);
 
       })
       .catch((error) => {
@@ -51,17 +57,10 @@ export default function ShowsScreen({ navigation }) {
   return (
     <View style={styles.ShowsScreen}>
 
-      <SearchForm
-        setSearchQuery={setSearchQuery}
-        openFilter={() => setFilterOpen(!filterOpen)}
-      />
+      <SearchForm type="shows" setSearchQuery={setSearchQuery} openFilter={() => setFilterOpen(!filterOpen)}/>
 
       {filterOpen && (
-        <Filter
-          genres={genres}
-          selectedGenres={selectedGenres}
-          setSelectedGenres={setSelectedGenres}
-        />
+        <Filter genres={genres} selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres}/>
       )}
 
       {filteredShows && filteredShows.length > 0 ? (

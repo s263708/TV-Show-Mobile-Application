@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, Pressable, Keyboard } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
-export default function SearchForm({ setSearchQuery, openFilter }) {
+export default function SearchForm({ setSearchQuery, type, openFilter }) {
 
     const [text, setText] = useState('');
 
@@ -15,7 +15,7 @@ export default function SearchForm({ setSearchQuery, openFilter }) {
         <View style={styles.searchForm}>
             <TextInput
                 style={styles.input}
-                placeholder="Search shows..."
+                placeholder={"Search " + (type ? type : "shows") + "..."}
                 onChangeText={setText}
                 onSubmitEditing={submitHandler}
             />
@@ -24,9 +24,12 @@ export default function SearchForm({ setSearchQuery, openFilter }) {
                 <FontAwesome name='search' size={24} color='white'/>
             </Pressable>
 
-            <Pressable style={styles.filterButton} onPress={openFilter}>
-                <FontAwesome name='filter' size={22} color='white'/>
-            </Pressable>
+            {/* Only show filter button if openFilter exists */}
+            {openFilter && (
+                <Pressable style={styles.filterButton} onPress={openFilter}>
+                    <FontAwesome name='filter' size={22} color='white'/>
+                </Pressable>
+            )}
         </View>
     );
 }
