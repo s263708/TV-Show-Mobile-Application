@@ -8,7 +8,23 @@ const Stack = createStackNavigator();
 
 export default function PeopleNavigator() {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator
+            screenOptions={{
+                headerStyle: {
+                    backgroundColor: '#2f2f34'
+                },
+
+                headerTintColor: '#fff7fb',
+
+                headerTitleStyle: {
+                    color: '#fff7fb'
+                },
+                
+                cardStyle: {
+                    backgroundColor: '#2f2f34'
+                }
+            }}
+        >
             <Stack.Screen
                 name="People"
                 component={PeopleScreen}

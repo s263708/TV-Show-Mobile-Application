@@ -26,28 +26,31 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        padding: 10
+        paddingHorizontal: 10,
+        paddingBottom: 8,
+        backgroundColor: '#2f2f34'
     },
 
     genreButton: {
         padding: 8,
         margin: 5,
-        backgroundColor: '#ddd',
+        backgroundColor: '#3b3b42',
         borderWidth: 1,
-        borderColor: '#999'
+        borderColor: '#d9aebb',
+        borderRadius: 8
     },
 
     selectedGenreButton: {
-        backgroundColor: '#000',
-        borderColor: '#000'
+        backgroundColor: '#d9aebb',
+        borderColor: '#d9aebb'
     },
 
     genreText: {
-        color: '#000'
+        color: '#fff7fb'
     },
 
     selectedGenreText: {
-        color: '#fff',
+        color: '#2f2f34',
         fontWeight: 'bold'
     }
 });

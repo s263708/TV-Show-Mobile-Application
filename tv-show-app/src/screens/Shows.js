@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, ActivityIndicator, FlatList, Image, Pressable } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, FlatList, Image, Pressable, useWindowDimensions } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import SearchForm from '../components/SearchForm';
 import Filter from '../components/Filter';
 
@@ -14,6 +15,10 @@ export default function ShowsScreen({ navigation }) {
   const [selectedGenres, setSelectedGenres] = useState([]);
 
   const [filterOpen, setFilterOpen] = useState(false);
+
+  const { width, height } = useWindowDimensions();
+  
+  const isLandscape = width > height;
 
   const searchShows = () => {
     console.log("Make a call to the API using the search query: " + searchQuery);
@@ -55,7 +60,7 @@ export default function ShowsScreen({ navigation }) {
   });
 
   return (
-    <View style={styles.ShowsScreen}>
+    <SafeAreaView style={styles.ShowsScreen} edges={['left', 'right', 'bottom']}>
 
       <SearchForm type="shows" setSearchQuery={setSearchQuery} openFilter={() => setFilterOpen(!filterOpen)}/>
 
@@ -66,8 +71,9 @@ export default function ShowsScreen({ navigation }) {
       {filteredShows && filteredShows.length > 0 ? (
         <View style={styles.resultsContainer}>
           <FlatList
-            numColumns={2}
-            style={{ margin: 10 }}
+            key={isLandscape ? 'landscape' : 'portrait'}
+            numColumns={isLandscape ? 3 : 2}
+            contentContainerStyle={styles.listContent}
             data={filteredShows}
             keyExtractor={(item) => item.show.id.toString()}
             renderItem={({ item }) => (
@@ -97,17 +103,18 @@ export default function ShowsScreen({ navigation }) {
         </View>
       ) : (
         <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color="#000"/>
+          <ActivityIndicator size="large" color="#d9aebb"/>
         </View>
       )}
 
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   ShowsScreen: {
     flex: 1,
+    backgroundColor: '#2f2f34',
   },
 
   loadingContainer: {
@@ -119,10 +126,18 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
+  listContent: {
+    padding: 10,
+    paddingBottom: 25
+  },
+
   resultItem: {
-    width: '50%',
-    margin: '1%',
+    flex: 1,
+    margin: 8,
     alignItems: 'center',
+    backgroundColor: '#3b3b42',
+    borderRadius: 12,
+    padding: 8
   },
 
   resultImageTouchable: {
@@ -132,10 +147,13 @@ const styles = StyleSheet.create({
   resultImage: {
     width: '100%',
     height: 250,
+    borderRadius: 10
   },
 
   resultText: {
-    marginTop: 5,
+    marginTop: 8,
     textAlign: 'center',
+    color: '#fff7fb',
+    fontWeight: '600'
   },
 });
