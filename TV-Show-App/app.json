@@ -1,29 +1,27 @@
 {
   "expo": {
-    "name": "tv-show-app",
+    "name": "SeriesScope",
     "slug": "tv-show-app",
     "version": "1.0.0",
     "orientation": "default",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/SeriesScope-icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/SeriesScope-splashscreen.png",
       "resizeMode": "contain",
-      "backgroundColor": "#f5dbe4"
+      "backgroundColor": "#2f2f34"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#f5dbe4",
-        "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
+        "foregroundImage": "./assets/SeriesScope-icon.png",
+        "backgroundColor": "#2f2f34"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/SeriesScope-icon.png"
     }
   }
 }
