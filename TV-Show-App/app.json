@@ -18,10 +18,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/SeriesScope-icon.png",
         "backgroundColor": "#2f2f34"
-      }
+      },
+      "package": "com.seriesscope.tvshowapp"
     },
     "web": {
       "favicon": "./assets/SeriesScope-icon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6d96ce3f-67ef-4d5c-8ed5-18ff48e338a7"
+      }
     }
   }
 }
