@@ -17,7 +17,7 @@ export default function ShowDetailsScreen({ route, navigation }) {
     const { showId } = route.params;
 
     const { width, height } = useWindowDimensions();
-    
+
     const isLandscape = width > height;
 
     const getShowData = () => {
@@ -254,7 +254,7 @@ export default function ShowDetailsScreen({ route, navigation }) {
 const styles = StyleSheet.create({
     ShowDetailsScreen: {
         flex: 1,
-        backgroundColor: '#2f2f34',
+        backgroundColor: '#000',
     },
 
     detailsContainer: {
@@ -276,7 +276,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 300,
         resizeMode: 'contain',
-        backgroundColor: '#3b3b42'
+        backgroundColor: '#111'
     },
 
     showImageLandscape: {
@@ -298,7 +298,7 @@ const styles = StyleSheet.create({
     episodesContainer: {
         marginHorizontal: 20,
         marginBottom: 25,
-        backgroundColor: '#3b3b42',
+        backgroundColor: '#111',
         borderRadius: 12,
         padding: 14
     },
@@ -322,19 +322,19 @@ const styles = StyleSheet.create({
     },
 
     dropdownButtonText: {
-        color: '#2f2f34',
+        color: '#000',
         fontSize: 16,
         fontWeight: 'bold'
     },
 
     dropdownArrow: {
-        color: '#2f2f34',
+        color: '#000',
         fontSize: 14,
         fontWeight: 'bold'
     },
 
     dropdownMenu: {
-        backgroundColor: '#2f2f34',
+        backgroundColor: '#000',
         borderRadius: 10,
         marginBottom: 12,
         borderWidth: 1,
@@ -345,7 +345,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 12,
         borderBottomWidth: 1,
-        borderBottomColor: '#3b3b42'
+        borderBottomColor: '#111'
     },
 
     dropdownItemSelected: {
@@ -358,7 +358,7 @@ const styles = StyleSheet.create({
     },
 
     dropdownItemTextSelected: {
-        color: '#2f2f34',
+        color: '#000',
         fontWeight: 'bold'
     },
 
@@ -374,7 +374,7 @@ const styles = StyleSheet.create({
     },
 
     episodeRow: {
-        backgroundColor: '#2f2f34',
+        backgroundColor: '#000',
         borderRadius: 8,
         paddingVertical: 8,
         paddingHorizontal: 10,
@@ -403,7 +403,7 @@ const styles = StyleSheet.create({
         flex: 1,
         margin: 10,
         minHeight: 260,
-        backgroundColor: '#3b3b42',
+        backgroundColor: '#111',
         borderRadius: 12,
         padding: 8
     },
@@ -424,7 +424,7 @@ const styles = StyleSheet.create({
     },
 
     noCastImageText: {
-        color: '#2f2f34',
+        color: '#000',
         fontWeight: '600'
     },
 

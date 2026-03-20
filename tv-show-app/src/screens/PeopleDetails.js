@@ -9,7 +9,7 @@ export default function PeopleDetailsScreen({ route, navigation }) {
     const [castCredits, setCastCredits] = useState();
 
     const [crewCredits, setCrewCredits] = useState();
-    
+
     const [selectedCreditType, setSelectedCreditType] = useState();
 
     const [creditDropdownOpen, setCreditDropdownOpen] = useState(false);
@@ -285,7 +285,7 @@ export default function PeopleDetailsScreen({ route, navigation }) {
 const styles = StyleSheet.create({
     PeopleDetailsScreen: {
         flex: 1,
-        backgroundColor: '#2f2f34',
+        backgroundColor: '#000',
     },
 
     detailsContainer: {
@@ -309,7 +309,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 300,
         resizeMode: 'contain',
-        backgroundColor: '#3b3b42'
+        backgroundColor: '#111'
     },
 
     personImageLandscape: {
@@ -331,7 +331,7 @@ const styles = StyleSheet.create({
     creditsContainer: {
         marginHorizontal: 20,
         marginBottom: 25,
-        backgroundColor: '#3b3b42',
+        backgroundColor: '#111',
         borderRadius: 12,
         padding: 14
     },
@@ -355,19 +355,19 @@ const styles = StyleSheet.create({
     },
 
     dropdownButtonText: {
-        color: '#2f2f34',
+        color: '#000',
         fontSize: 16,
         fontWeight: 'bold'
     },
 
     dropdownArrow: {
-        color: '#2f2f34',
+        color: '#000',
         fontSize: 14,
         fontWeight: 'bold'
     },
 
     dropdownMenu: {
-        backgroundColor: '#2f2f34',
+        backgroundColor: '#000',
         borderBottomLeftRadius: 12,
         borderBottomRightRadius: 12,
         borderTopLeftRadius: 0,
@@ -381,7 +381,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 12,
         borderBottomWidth: 1,
-        borderBottomColor: '#3b3b42'
+        borderBottomColor: '#111'
     },
 
     dropdownItemSelected: {
@@ -394,7 +394,7 @@ const styles = StyleSheet.create({
     },
 
     dropdownItemTextSelected: {
-        color: '#2f2f34',
+        color: '#000',
         fontWeight: 'bold'
     },
 
@@ -419,7 +419,7 @@ const styles = StyleSheet.create({
         flex: 1,
         margin: 10,
         minHeight: 240,
-        backgroundColor: '#2f2f34',
+        backgroundColor: '#000',
         borderRadius: 12,
         padding: 8
     },
@@ -441,7 +441,7 @@ const styles = StyleSheet.create({
     },
 
     showNoImageText: {
-        color: '#2f2f34',
+        color: '#000',
         fontWeight: '600'
     },
 
@@ -453,7 +453,7 @@ const styles = StyleSheet.create({
     },
 
     noImageText: {
-        color: '#2f2f34',
+        color: '#000',
         fontWeight: '600'
     }
 });

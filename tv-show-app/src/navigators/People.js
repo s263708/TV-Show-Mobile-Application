@@ -11,7 +11,7 @@ export default function PeopleNavigator() {
         <Stack.Navigator
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: '#2f2f34'
+                    backgroundColor: '#000'
                 },
 
                 headerTintColor: '#fff7fb',
@@ -19,9 +19,9 @@ export default function PeopleNavigator() {
                 headerTitleStyle: {
                     color: '#fff7fb'
                 },
-                
+
                 cardStyle: {
-                    backgroundColor: '#2f2f34'
+                    backgroundColor: '#000'
                 }
             }}
         >

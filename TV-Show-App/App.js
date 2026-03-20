@@ -17,17 +17,17 @@ export default function App() {
         <Drawer.Navigator
           screenOptions={{
             headerStyle: {
-              backgroundColor: '#2f2f34'
+              backgroundColor: '#000'
             },
             headerTintColor: '#fff7fb',
             drawerStyle: {
-              backgroundColor: '#2f2f34'
+              backgroundColor: '#000'
             },
             drawerActiveBackgroundColor: '#d9aebb',
-            drawerActiveTintColor: '#2f2f34',
+            drawerActiveTintColor: '#000',
             drawerInactiveTintColor: '#fff7fb',
             sceneContainerStyle: {
-              backgroundColor: '#2f2f34'
+              backgroundColor: '#000'
             }
           }}
         >

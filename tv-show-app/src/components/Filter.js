@@ -28,13 +28,13 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         paddingHorizontal: 10,
         paddingBottom: 8,
-        backgroundColor: '#2f2f34'
+        backgroundColor: '#000'
     },
 
     genreButton: {
         padding: 8,
         margin: 5,
-        backgroundColor: '#3b3b42',
+        backgroundColor: '#111',
         borderWidth: 1,
         borderColor: '#d9aebb',
         borderRadius: 8
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     },
 
     selectedGenreText: {
-        color: '#2f2f34',
+        color: '#000',
         fontWeight: 'bold'
     }
 });

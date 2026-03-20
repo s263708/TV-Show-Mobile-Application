@@ -17,7 +17,7 @@ export default function ShowsScreen({ navigation }) {
   const [filterOpen, setFilterOpen] = useState(false);
 
   const { width, height } = useWindowDimensions();
-  
+
   const isLandscape = width > height;
 
   const searchShows = () => {
@@ -114,7 +114,7 @@ export default function ShowsScreen({ navigation }) {
 const styles = StyleSheet.create({
   ShowsScreen: {
     flex: 1,
-    backgroundColor: '#2f2f34',
+    backgroundColor: '#000',
   },
 
   loadingContainer: {
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 8,
     alignItems: 'center',
-    backgroundColor: '#3b3b42',
+    backgroundColor: '#111',
     borderRadius: 12,
     padding: 8
   },

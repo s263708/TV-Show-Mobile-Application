@@ -78,7 +78,7 @@ export default function PeopleScreen({ navigation }) {
 const styles = StyleSheet.create({
     PeopleScreen: {
         flex: 1,
-        backgroundColor: '#2f2f34',
+        backgroundColor: '#000',
     },
 
     resultsContainer: {
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
         flex: 1,
         margin: 10,
         minHeight: 240,
-        backgroundColor: '#3b3b42',
+        backgroundColor: '#111',
         borderRadius: 12,
         padding: 8
     },
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     },
 
     noImageText: {
-        color: '#2f2f34',
+        color: '#000',
         fontWeight: '600'
     }
 });

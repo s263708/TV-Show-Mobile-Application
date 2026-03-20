@@ -15,7 +15,7 @@ export default function HomeScreen({ navigation }) {
     const [loadingPeople, setLoadingPeople] = useState(true);
 
     const topShowIds = [169, 82, 431, 2993, 66, 526];
-    
+
     const popularPeopleIds = [14245, 14079, 24483, 2168, 6384, 4304];
 
     useEffect(() => {
@@ -174,7 +174,7 @@ export default function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
     HomeScreen: {
         flex: 1,
-        backgroundColor: '#2f2f34',
+        backgroundColor: '#000',
     },
 
     scrollView: {
@@ -220,7 +220,7 @@ const styles = StyleSheet.create({
     },
 
     topButtonText: {
-        color: '#2f2f34',
+        color: '#000',
         fontSize: 15,
         fontWeight: 'bold'
     },
@@ -256,7 +256,7 @@ const styles = StyleSheet.create({
 
     showCard: {
         width: 190,
-        backgroundColor: '#3b3b42',
+        backgroundColor: '#111',
         borderRadius: 16,
         overflow: 'hidden',
         marginRight: 14
@@ -286,7 +286,7 @@ const styles = StyleSheet.create({
 
     personCard: {
         width: 170,
-        backgroundColor: '#3b3b42',
+        backgroundColor: '#111',
         borderRadius: 16,
         overflow: 'hidden',
         marginRight: 14

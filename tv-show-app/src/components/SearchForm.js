@@ -31,7 +31,7 @@ export default function SearchForm({ setSearchQuery, type, openFilter }) {
 
             {openFilter && (
                 <Pressable style={styles.filterButton} onPress={openFilter}>
-                    <FontAwesome name='filter' size={22} color='#2f2f34'/>
+                    <FontAwesome name='filter' size={22} color='#000'/>
                 </Pressable>
             )}
         </View>
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
         width: '100%',
         minHeight: 52,
         flexDirection: 'row',
-        backgroundColor: '#2f2f34',
+        backgroundColor: '#000',
         paddingHorizontal: 10,
         paddingTop: 10,
         paddingBottom: 6
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 12,
         borderWidth: 1.5,
         borderColor: '#d9aebb',
-        backgroundColor: '#3b3b42',
+        backgroundColor: '#111',
         borderRadius: 10,
         color: '#fff7fb',
         marginRight: 8

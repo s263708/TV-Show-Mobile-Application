@@ -11,14 +11,14 @@ export default function ShowsNavigator() {
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: '#2f2f34'
+          backgroundColor: '#000'
         },
         headerTintColor: '#fff7fb',
         headerTitleStyle: {
           color: '#fff7fb'
         },
         cardStyle: {
-          backgroundColor: '#2f2f34'
+          backgroundColor: '#000'
         }
       }}
     >
