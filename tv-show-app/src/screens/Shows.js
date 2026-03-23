@@ -7,37 +7,29 @@ import Filter from '../components/Filter';
 export default function ShowsScreen({ navigation }) {
 
   const [searchQuery, setSearchQuery] = useState('a');
-
   const [shows, setShows] = useState();
-
   const [genres, setGenres] = useState([]);
-
   const [selectedGenres, setSelectedGenres] = useState([]);
-
   const [filterOpen, setFilterOpen] = useState(false);
 
   const { width, height } = useWindowDimensions();
-
-  const isLandscape = width > height;
+  const isLandscape = width > height; // checks orientation
 
   const searchShows = () => {
-    console.log("Make a call to the API using the search query: " + searchQuery);
-
     fetch('https://api.tvmaze.com/search/shows?q=' + searchQuery)
       .then((response) => response.json())
       .then((json) => {
 
         setShows(json);
 
+        // collect unique genres from results
         const genreSet = new Set();
-
         json.forEach(item => {
           item.show.genres.forEach(g => genreSet.add(g));
         });
 
         setGenres([...genreSet]);
-
-        setSelectedGenres([]);
+        setSelectedGenres([]); // reset filters on new search
 
       })
       .catch((error) => {
@@ -46,32 +38,38 @@ export default function ShowsScreen({ navigation }) {
   };
 
   useEffect(() => {
-    searchShows();
+    searchShows(); // runs when search query changes
   }, [searchQuery]);
 
   const filteredShows = shows?.filter((item) => {
-
     if (selectedGenres.length === 0) return true;
 
     return selectedGenres.some(genre =>
       item.show.genres.includes(genre)
     );
-
   });
 
   return (
     <SafeAreaView style={styles.ShowsScreen} edges={['left', 'right', 'bottom']}>
 
-      <SearchForm type="shows" setSearchQuery={setSearchQuery} openFilter={() => setFilterOpen(!filterOpen)}/>
+      <SearchForm
+        type="shows"
+        setSearchQuery={setSearchQuery}
+        openFilter={() => setFilterOpen(!filterOpen)} // toggle filter
+      />
 
       {filterOpen && (
-        <Filter genres={genres} selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres}/>
+        <Filter
+          genres={genres}
+          selectedGenres={selectedGenres}
+          setSelectedGenres={setSelectedGenres}
+        />
       )}
 
       {filteredShows && filteredShows.length > 0 ? (
         <View style={styles.resultsContainer}>
           <FlatList
-            key={isLandscape ? 'landscape' : 'portrait'}
+            key={isLandscape ? 'landscape' : 'portrait'} // forces layout refresh on rotate
             numColumns={isLandscape ? 3 : 2}
             contentContainerStyle={styles.listContent}
             data={filteredShows}
@@ -103,6 +101,7 @@ export default function ShowsScreen({ navigation }) {
         </View>
       ) : (
         <View style={styles.loadingContainer}>
+          {/* shows loading while waiting for API */}
           <ActivityIndicator size="large" color="#d9aebb"/>
         </View>
       )}

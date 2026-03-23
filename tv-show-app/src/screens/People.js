@@ -6,18 +6,16 @@ import SearchForm from '../components/SearchForm';
 export default function PeopleScreen({ navigation }) {
 
     const [searchQuery, setSearchQuery] = useState('Tom');
-
     const [people, setPeople] = useState();
 
     const { width, height } = useWindowDimensions();
-    
-    const isLandscape = width > height;
+    const isLandscape = width > height; // checks screen orientation
 
     const searchPeople = () => {
         fetch('https://api.tvmaze.com/search/people?q=' + searchQuery)
         .then((response) => response.json())
         .then((json) => {
-            setPeople(json);
+            setPeople(json); // stores API results in state
         })
         .catch((error) => {
             console.error(error);
@@ -25,7 +23,7 @@ export default function PeopleScreen({ navigation }) {
     };
 
     useEffect(() => {
-        searchPeople();
+        searchPeople(); // runs again whenever the search query changes
     }, [searchQuery]);
 
     return (
@@ -36,7 +34,7 @@ export default function PeopleScreen({ navigation }) {
             {people ? (
                 <View style={styles.resultsContainer}>
                     <FlatList
-                        key={isLandscape ? 'landscape' : 'portrait'}
+                        key={isLandscape ? 'landscape' : 'portrait'} // refreshes layout on rotate
                         numColumns={isLandscape ? 3 : 2}
                         contentContainerStyle={styles.listContent}
                         data={people}
@@ -67,6 +65,7 @@ export default function PeopleScreen({ navigation }) {
                 </View>
             ) : (
                 <View style={styles.loadingContainer}>
+                    {/* shown while waiting for API results */}
                     <ActivityIndicator size="large" color="#d9aebb"/>
                 </View>
             )}

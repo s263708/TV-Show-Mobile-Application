@@ -7,20 +7,19 @@ export default function HomeScreen({ navigation }) {
     const { width } = useWindowDimensions();
 
     const [topShows, setTopShows] = useState([]);
-
     const [popularPeople, setPopularPeople] = useState([]);
 
     const [loadingShows, setLoadingShows] = useState(true);
-
     const [loadingPeople, setLoadingPeople] = useState(true);
 
+    // manually selected IDs since API doesn’t provide a “popular” endpoint
     const topShowIds = [169, 82, 431, 2993, 66, 526];
-
     const popularPeopleIds = [14245, 14079, 24483, 2168, 6384, 4304];
 
     useEffect(() => {
         const getTopShows = async () => {
             try {
+                // fetch multiple shows at once
                 const responses = await Promise.all(
                     topShowIds.map((id) =>
                         fetch('https://api.tvmaze.com/shows/' + id).then((response) => response.json())
@@ -31,7 +30,7 @@ export default function HomeScreen({ navigation }) {
             } catch (error) {
                 console.error(error);
             } finally {
-                setLoadingShows(false);
+                setLoadingShows(false); // stop loading spinner
             }
         };
 
@@ -111,6 +110,7 @@ export default function HomeScreen({ navigation }) {
                                     <View style={styles.showInfoBox}>
                                         <Text style={styles.showName}>{show.name}</Text>
                                         <Text style={styles.showInfo}>
+                                            {/* limits genres shown to avoid clutter */}
                                             {show.genres && show.genres.length > 0 ? show.genres.slice(0, 2).join(', ') : 'TV Show'}
                                         </Text>
                                     </View>

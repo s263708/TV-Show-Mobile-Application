@@ -7,10 +7,10 @@ export default function SearchForm({ setSearchQuery, type, openFilter }) {
     const [text, setText] = useState('');
 
     const submitHandler = () => {
-        Keyboard.dismiss();
+        Keyboard.dismiss(); // hide keyboard after submitting
 
-        if(text && text.trim() !== ''){
-            setSearchQuery(text);
+        if (text && text.trim() !== '') {
+            setSearchQuery(text); // update parent state with search input
         }
     };
 
@@ -18,7 +18,7 @@ export default function SearchForm({ setSearchQuery, type, openFilter }) {
         <View style={styles.searchForm}>
             <TextInput
                 style={styles.input}
-                placeholder={"Search " + (type ? type : "shows") + "..."}
+                placeholder={"Search " + (type ? type : "shows") + "..."} // dynamic placeholder based on screen
                 placeholderTextColor="#d3c5cb"
                 onChangeText={setText}
                 onSubmitEditing={submitHandler}
